@@ -26,7 +26,6 @@ function createGalleryItemsMarkup(galleryItems) {
 }
  galleryContainer.insertAdjacentHTML('beforeend', markupGallery);
 
-
 galleryContainer.addEventListener('click', onGalleryContainerClick);
 
 function onGalleryContainerClick (evt) {
@@ -38,13 +37,13 @@ const instance = basicLightbox.create(`
 <img src="${evt.target.dataset.source}" width="800" height="600">
 `)
   instance.show();
-
- galleryContainer.addEventListener('keydown', onGalleryContainerClick)
-  function onGalleryContainerClick(evt) {
-    instance.close()
-  }
-
- 
+  
+  document.addEventListener("keydown", evt => {
+    if (evt.key !== "Escape") {
+      return;
+    } else instance.close();
+  });
+  
 }
 
 
