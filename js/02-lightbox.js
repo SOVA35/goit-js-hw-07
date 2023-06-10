@@ -27,16 +27,15 @@ galleryContainer.addEventListener('click', onGalleryContainerClick);
 
 function onGalleryContainerClick (evt) {
     evt.preventDefault();
-  if (!evt.target.classList.contains("gallery__item")) {
+  if (!evt.target.classList.contains("gallery__image")) {
     return;
   }
-  onGalleryContainerClick = basicLightbox.create(`
-<img src="${evt.target.dataset.sourse}" width="800" height="600">
-`)
-  onGalleryContainerClick.show();
-
- 
-}
+  let lightbox = new SimpleLightbox('.gallery a', {
+    captionsData: "alt",
+    captionsDelay: 250,
+   
+  });
+};
 
 
 
