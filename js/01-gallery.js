@@ -22,7 +22,7 @@ function createGalleryItemsMarkup(galleryItems) {
   </a>
 </li>
     `
-    }).join("");
+   }).join("");
 }
  galleryContainer.insertAdjacentHTML('beforeend', markupGallery);
 
@@ -31,13 +31,18 @@ galleryContainer.addEventListener('click', onGalleryContainerClick);
 
 function onGalleryContainerClick (evt) {
     evt.preventDefault();
-  if (!evt.target.classList.contains("gallery__item")) {
+  if (!evt.target.classList.contains("gallery__image")) {
     return;
   }
-  onGalleryContainerClick = basicLightbox.create(`
-<img src="${evt.dataset.sourse}" width="800" height="600">
+const instance = basicLightbox.create(`
+<img src="${evt.target.dataset.source}" width="800" height="600">
 `)
-  onGalleryContainerClick.show();
+  instance.show();
+
+ galleryContainer.addEventListener('keydown', onGalleryContainerClick)
+  function onGalleryContainerClick(evt) {
+    instance.close()
+  }
 
  
 }
