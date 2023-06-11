@@ -43,9 +43,9 @@ const instance = basicLightbox.create(`
       return;
     } else instance.close();
   });
+document.removeEventListener("keydown", evt);
   
 }
-
 
 
 
